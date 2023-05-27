@@ -45,6 +45,23 @@ namespace haromszogekCLI
             }
             Console.WriteLine($"Legnagyobb területű háromszög: {legnagyobb}");
             Console.WriteLine($"Legnagyobb területű háromszög adatai: {legnagyobbharomszog.a} {legnagyobbharomszog.b} {legnagyobbharomszog.c}");
+            
+            var legnagyobbharomszog = list
+                .Where(h => derekszog(h))
+                .OrderByDescending(h => h.a * h.b / 2)
+                .FirstOrDefault();
+
+            if (legnagyobbharomszog != null)
+            {
+                int legnagyobb = legnagyobbharomszog.a * legnagyobbharomszog.b / 2;
+                Console.WriteLine($"Legnagyobb területű háromszög: {legnagyobb}");
+                Console.WriteLine($"Legnagyobb területű háromszög adatai: {legnagyobbharomszog.a} {legnagyobbharomszog.b} {legnagyobbharomszog.c}");
+            }
+            else
+            {
+                Console.WriteLine("Nincs megfelelő háromszög a listában.");
+            }
+
 
             Console.ReadLine();
         }
